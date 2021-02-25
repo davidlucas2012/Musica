@@ -6,10 +6,12 @@ import Navbar from "./components/Navbar/Navbar.js";
 import Home from "./components/Home/Home.js";
 import firebase from "./firebase";
 import AlbumDetails from "./components/AlbumDetails/AlbumDetails";
+import Player from "./components/Player/Player";
 
 function App() {
   const [searchString, setsearchString] = useState("");
   const [album, setalbum] = useState();
+  const [trackNumber, settrackNumber] = useState(null);
 
   const search = (e) => {
     console.log(e);
@@ -17,7 +19,7 @@ function App() {
   };
 
   const playTrack = (e) => {
-    console.log(e);
+    settrackNumber(e);
   };
 
   //get album from Firebase
@@ -28,7 +30,6 @@ function App() {
     ref.get().then((item) => {
       const items = item.docs.map((doc) => doc.data());
 
-      console.log(items);
       setalbum(items);
     });
   }
@@ -87,6 +88,7 @@ function App() {
           />
           <Route path="/" component={RenderApp}></Route>
         </Switch>
+        <Player album={album} trackNumber={trackNumber} />
       </BrowserRouter>
     </div>
   );
