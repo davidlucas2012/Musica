@@ -1,0 +1,30 @@
+.ts-main-cont {
+  display: flex;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
+  flex-direction: column;
+  min-width: 70rem;
+}
+
+.ts-title {
+  padding-left: 3rem;
+  font-weight: bolder;
+  font-size: 25px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.ts-cont {
+  justify-content: space-evenly;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 960px) {
+  .ts-main-cont {
+    min-width: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}

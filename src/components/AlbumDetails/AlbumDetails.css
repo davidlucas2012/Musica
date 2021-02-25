@@ -1,0 +1,206 @@
+.ad-main-cont {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-bottom: 20rem;
+}
+.ad-name {
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.ad-artist {
+  font-style: italic;
+  font-size: 15px;
+}
+
+.ad-left-cont {
+  display: flex;
+  flex-direction: column;
+  min-width: 25%;
+  width: 31%;
+}
+
+.ad-cov {
+  width: 100%;
+  box-shadow: 5px 5px 20px 5px #888888;
+  object-fit: scale-down;
+}
+
+.ad-buy-cont {
+  display: flex;
+  flex-direction: column;
+}
+
+.ad-price {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 35px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bolder;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.ad-cart {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  border: solid 2px black;
+  width: 70%;
+  padding: 5px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.ad-cart:hover {
+  background-color: #ff0000;
+  color: white;
+  border: solid 2px rgb(58, 58, 58);
+}
+
+.cover-track-cont {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgba(167, 167, 167, 0.212);
+  min-width: 70rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.track-cont {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.track-main-cont {
+  border-radius: 5px;
+  display: flex;
+  justify-content: start;
+  padding: 5px;
+  margin-bottom: 7px;
+  transition: 300ms;
+  cursor: default;
+  background-color: rgba(169, 169, 169, 0.397);
+}
+
+.track-main-cont-musc {
+  border: solid 1px #fa7878;
+  border-radius: 5px;
+  display: flex;
+  cursor: default;
+  justify-content: start;
+  padding: 5px;
+  margin-bottom: 7px;
+  transition: 300ms;
+  background-color: rgba(226, 68, 68, 0.397);
+}
+
+.track-main-cont-musc:hover {
+  filter: brightness(1.3);
+}
+
+.track-main-cont-musc:hover .ad-play {
+  opacity: 1;
+}
+
+.track-main-cont:hover {
+  filter: brightness(1.3);
+}
+
+.track-main-cont:hover .ad-play {
+  opacity: 1;
+}
+
+.ad-track-number {
+  width: 1rem;
+  height: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  text-align: center;
+  transition: 300ms;
+}
+
+.ad-play {
+  cursor: pointer;
+  margin-left: auto;
+  width: 20px;
+  height: 20px;
+  transition: 300ms;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 1rem;
+  opacity: 0;
+}
+
+.ad-play:hover {
+  filter: brightness(1.3);
+  filter: invert(27%) sepia(77%) saturate(6285%) hue-rotate(354deg)
+    brightness(102%) contrast(140%);
+}
+
+.ad-track-title {
+  font-weight: bold;
+}
+
+.ad-track-dur {
+  margin-right: 2rem;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+@media screen and (max-width: 960px) {
+  .ad-main-cont {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .cover-track-cont {
+    padding-left: 0rem;
+    padding-right: 0rem;
+    margin-top: 1rem;
+    flex-direction: column;
+    min-width: 0rem;
+  }
+
+  .track-cont {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ad-left-cont {
+    display: flex;
+    flex-direction: column;
+    min-width: 70%;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .track-main-cont {
+  }
+
+  .ad-track-number {
+    margin-left: 5px;
+    margin-right: 1rem;
+  }
+
+  .ad-track-title {
+    font-weight: bold;
+  }
+
+  .ad-track-dur {
+    margin-left: auto;
+    margin-right: 5px;
+  }
+}

@@ -1,0 +1,44 @@
+.sc-main-cont {
+  display: flex;
+  width: 30%;
+  margin: 1rem;
+  cursor: pointer;
+  transition: 300ms;
+  background: rgba(211, 211, 211, 0.473);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.sc-main-cont:hover {
+  filter: brightness(1.1);
+}
+
+.sc-title-year-cont {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+.sc-title {
+  font-weight: bolder;
+}
+
+.sc-year {
+}
+
+.sc-dur {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+}
+
+.sc-cover {
+  width: 3rem;
+  height: 3rem;
+}
+
+@media screen and (max-width: 960px) {
+  .sc-main-cont {
+    width: 100%;
+  }
+}
