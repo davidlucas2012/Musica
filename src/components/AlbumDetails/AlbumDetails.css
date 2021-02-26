@@ -6,14 +6,34 @@
   padding-right: 5rem;
   padding-bottom: 20rem;
 }
+
+.ad-year {
+  font-size: 23px;
+}
+
 .ad-name {
   font-size: 30px;
   font-weight: bolder;
+  display: flex;
+}
+
+.ratings {
+  margin-left: 1rem;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.ad-ratings {
+  font-style: italic;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 18px;
 }
 
 .ad-artist {
   font-style: italic;
   font-size: 15px;
+  font-size: 25px;
 }
 
 .ad-left-cont {
@@ -58,7 +78,7 @@
 }
 
 .ad-cart:hover {
-  background-color: #ff0000;
+  background-color: rgb(100, 26, 26);
   color: white;
   border: solid 2px rgb(58, 58, 58);
 }
@@ -84,7 +104,7 @@
 .track-main-cont {
   border-radius: 5px;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   padding: 5px;
   margin-bottom: 7px;
   transition: 300ms;
@@ -93,11 +113,11 @@
 }
 
 .track-main-cont-musc {
-  border: solid 1px #fa7878;
+  border: solid 3px rgb(100, 26, 26);
   border-radius: 5px;
   display: flex;
   cursor: default;
-  justify-content: start;
+  justify-content: flex-start;
   padding: 5px;
   margin-bottom: 7px;
   transition: 300ms;

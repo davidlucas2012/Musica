@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import searchImg from "../../images/search.png";
 import musica from "../../images/musica.png";
+import Cart from "../../images/cart.png";
 
 function Navbar(props) {
-  const { search } = props;
+  const { search, cart } = props;
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [nav, setnav] = useState(false);
@@ -59,7 +60,8 @@ function Navbar(props) {
     <>
       <nav className={nav ? "navbar active" : "navbar"}>
         <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-          <img className="mov-logo" src={musica} alt="logo"></img> Musica
+          <img className="h-logo" src={musica} alt="logo"></img>
+          <span className="logo-musica">musica</span>
         </Link>
         <div className="menu-icon" onClick={handleClick}>
           <i className={click ? "fas fa-times" : "fas fa-bars"} />
@@ -89,6 +91,13 @@ function Navbar(props) {
                 value={searchValue}
               ></input>
             </div>
+          </li>
+
+          <li className="nav-item">
+            <Link to="/cart" className="nav-links" onClick={closeMobileMenu}>
+              <img className="nav-cart" src={Cart}></img>
+              <span className="nav-cart-count">{cart?.length}</span>
+            </Link>
           </li>
 
           <li>

@@ -10,8 +10,8 @@
 }
 
 .pl-prev {
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   transform: rotate(180deg);
   margin-top: auto;
   margin-bottom: auto;
@@ -21,8 +21,8 @@
 }
 
 .pl-next {
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   margin-top: auto;
   margin-bottom: auto;
   cursor: pointer;

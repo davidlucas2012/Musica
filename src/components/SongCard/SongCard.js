@@ -3,7 +3,7 @@ import "./SongCard.css";
 
 function SongCard(props) {
   const { songs, album } = props;
-  console.log(album);
+  // console.log(album);
 
   let albumCover = album
     .filter((f) => f.id === songs.albumId)

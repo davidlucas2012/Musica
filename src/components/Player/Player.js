@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Player.css";
 import next from "../../images/next.png";
 import play from "../../images/play.png";
-import pos from "../../images/pause.png";
+import stop from "../../images/stop.png";
 import vol from "../../images/vol.png";
 
 function Player(props) {
@@ -10,39 +10,43 @@ function Player(props) {
   const [song, setsong] = useState(null);
   const [Album, setAlbum] = useState(null);
   const [pause, setpause] = useState(false);
-  const [count, setcount] = useState(
-    (0).toLocaleString("en-US", {
-      minimumIntegerDigits: 2,
-      useGrouping: false,
-    })
-  );
+  const [count, setcount] = useState("00");
+  const [min, setmin] = useState(0);
+
   const Play = () => {
     setpause(true);
-    for (var i = 0; i < 100; i++) {
-      task(i);
-    }
   };
 
   const Pause = () => {
-    setcount(
-      (0).toLocaleString("en-US", {
-        minimumIntegerDigits: 2,
-        useGrouping: false,
-      })
-    );
+    setcount("00");
     setpause(false);
   };
 
-  function task(i) {
-    setTimeout(function () {
-      var c = i.toLocaleString("en-US", {
-        minimumIntegerDigits: 2,
-        useGrouping: false,
-      });
+  useEffect(() => {
+    let interval = null;
+    if (pause) {
+      var count = 1;
+      interval = setInterval(() => {
+        var val = count++;
 
-      setcount(c);
-    }, 1000 * i);
-  }
+        if (val > 59) {
+          setmin((m) => m + 1);
+          setcount("00");
+          count = 1;
+        } else {
+          setcount(
+            val.toLocaleString("en-US", {
+              minimumIntegerDigits: 2,
+              useGrouping: false,
+            })
+          );
+        }
+      }, 1000);
+    } else if (!pause) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [pause]);
 
   useEffect(() => {
     if (!album) return;
@@ -66,7 +70,7 @@ function Player(props) {
       <img className="pl-prev" src={next}></img>
 
       {pause ? (
-        <img className="pl-play" src={pos} onClick={Pause}></img>
+        <img className="pl-play" src={stop} onClick={Pause}></img>
       ) : (
         <img className="pl-play" src={play} onClick={Play}></img>
       )}
@@ -86,7 +90,9 @@ function Player(props) {
           <span className="pl-sync"></span>
         </div>
         <div className="pl-lower-mid">
-          <span className="pl-dur-start">0:{count}</span>
+          <span className="pl-dur-start">
+            {min}:{count}
+          </span>
           <span className="pl-dur-end">{song.dur}</span>
         </div>
       </div>

@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import { Grow, CircularProgress } from "@material-ui/core";
+import { Grow, CircularProgress, CardContent } from "@material-ui/core";
 import { Switch, BrowserRouter, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar.js";
 import Home from "./components/Home/Home.js";
 import firebase from "./firebase";
 import AlbumDetails from "./components/AlbumDetails/AlbumDetails";
 import Player from "./components/Player/Player";
+import Cart from "./components/Cart/Cart";
 
 function App() {
   const [searchString, setsearchString] = useState("");
   const [album, setalbum] = useState();
   const [trackNumber, settrackNumber] = useState(null);
+  const [cart, setcart] = useState(null);
 
   const search = (e) => {
     console.log(e);
@@ -24,18 +26,36 @@ function App() {
 
   //get album from Firebase
 
-  const ref = firebase.firestore().collection("albums");
+  const albumLOc = firebase.firestore().collection("albums");
+  const cartLoc = firebase.firestore().collection("cart");
 
   function getdata() {
-    ref.get().then((item) => {
+    albumLOc.get().then((item) => {
       const items = item.docs.map((doc) => doc.data());
 
       setalbum(items);
     });
   }
 
+  function getCartItem() {
+    cartLoc.get().then((c) => {
+      const cartItem = c.docs.map((doc) => doc.data());
+
+      setcart(cartItem);
+    });
+  }
+
+  function addToCart(id) {
+    setcart((prev) => [...prev, { albumId: id }]);
+
+    cartLoc.add({
+      albumId: id,
+    });
+  }
+
   useEffect(() => {
     getdata();
+    getCartItem();
   }, []);
 
   const RenderApp = (e) => {
@@ -49,11 +69,10 @@ function App() {
               <Home album={album} />
             </Grow>
           );
-        case "/f":
+        case "/cart":
           return !album ? null : (
             <Grow in>
-              <AlbumDetails album={album} />
-              {/* <Home album={album} /> */}
+              <Cart cart={cart} album={album} />
             </Grow>
           );
         case "/add-movie":
@@ -78,12 +97,22 @@ function App() {
   return (
     <div className="app-main-cont">
       <BrowserRouter>
-        <Navbar search={search} />
+        {cart ? (
+          <Navbar search={search} cart={cart} />
+        ) : (
+          <Navbar search={search} cart={cart} />
+        )}
+
         <Switch>
           <Route
             path="/album-details/:id/:sid"
             render={(props) => (
-              <AlbumDetails playTrack={playTrack} album={album} {...props} />
+              <AlbumDetails
+                playTrack={playTrack}
+                album={album}
+                addToCart={addToCart}
+                {...props}
+              />
             )}
           />
           <Route path="/" component={RenderApp}></Route>
