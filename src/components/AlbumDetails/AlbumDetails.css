@@ -4,17 +4,19 @@
   padding: 2rem;
   padding-left: 5rem;
   padding-right: 5rem;
-  padding-bottom: 20rem;
+  padding-bottom: 5rem;
 }
 
 .ad-year {
   font-size: 23px;
+  pointer-events: none;
 }
 
 .ad-name {
   font-size: 30px;
   font-weight: bolder;
   display: flex;
+  pointer-events: none;
 }
 
 .ratings {
@@ -31,6 +33,7 @@
 }
 
 .ad-artist {
+  pointer-events: none;
   font-style: italic;
   font-size: 15px;
   font-size: 25px;

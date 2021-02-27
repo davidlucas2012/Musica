@@ -1,11 +1,52 @@
 .ac-main-cont {
   margin: 1rem;
-}
-
-.ac-cover {
   width: 12rem;
   height: 12rem;
-  object-fit: scale-down;
+  position: relative;
+}
+
+.ac-main-cont:hover .ac-cover {
+  filter: brightness(0.3);
+  box-shadow: 0px 1px 10px 0px rgb(100, 24, 24);
+}
+
+.ac-main-cont:hover .ac-price {
+  opacity: 1;
+  right: 1rem;
+}
+
+.ac-main-cont:hover .ac-name {
+  opacity: 1;
+  top: 1rem;
+}
+.ac-cover {
+  transition: 300ms;
+  width: 12rem;
+  height: 12rem;
+  object-fit: cover;
+}
+
+.ac-name {
+  transition: 300ms;
+  opacity: 0;
+  left: 1rem;
+  top: 0rem;
+  color: white;
+  font-weight: bolder;
+  font-size: 17px;
+  position: absolute;
+}
+
+.ac-price {
+  transition: 300ms;
+  opacity: 0;
+  bottom: 1rem;
+  right: 0rem;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+  font-size: 20px;
+  position: absolute;
 }
 
 @media screen and (max-width: 960px) {
@@ -13,5 +54,12 @@
     width: 9rem;
     height: 9rem;
     object-fit: scale-down;
+  }
+
+  .ac-main-cont {
+    margin: 1rem;
+    width: 8rem;
+    height: 8rem;
+    position: relative;
   }
 }

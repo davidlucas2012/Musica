@@ -9,6 +9,7 @@ import AlbumDetails from "./components/AlbumDetails/AlbumDetails";
 import Player from "./components/Player/Player";
 import Cart from "./components/Cart/Cart";
 import Albums from "./components/Albums/Albums";
+import PurchaseHistory from "./components/PurchaseHistory/PurchaseHistory";
 
 function App() {
   const [searchString, setsearchString] = useState("");
@@ -16,6 +17,7 @@ function App() {
   const [trackNumber, settrackNumber] = useState(null);
   const [cart, setcart] = useState(null);
   const [recents, setrecents] = useState(null);
+  const [purchase, setpurchase] = useState(null);
 
   const search = (e) => {
     console.log(e);
@@ -32,6 +34,7 @@ function App() {
   const albumLOc = firebase.firestore().collection("albums");
   const cartLoc = firebase.firestore().collection("cart");
   const recent = firebase.firestore().collection("recent");
+  const history = firebase.firestore().collection("purchase-history");
 
   function getdata() {
     albumLOc.get().then((item) => {
@@ -66,6 +69,15 @@ function App() {
       .map((m) => setcart((prev) => [...prev, m]));
   }
 
+  function emptyCart() {
+    cartLoc.get().then((res) => {
+      res.forEach((element) => {
+        element.ref.delete();
+      });
+    });
+    setcart([]);
+  }
+
   function addToRecent(track) {
     recent.doc(track).set({
       trackNumber: track,
@@ -83,10 +95,28 @@ function App() {
     });
   }
 
+  function getPurchases() {
+    history.get().then((p) => {
+      const pur = p.docs.map((doc) => doc.data());
+
+      setpurchase(pur);
+    });
+  }
+
+  function Purchase(album) {
+    history.doc(album).set({
+      albumId: album,
+      timeStamp: new Date(),
+    });
+
+    emptyCart();
+  }
+
   useEffect(() => {
     getdata();
     getCartItem();
     getRecents();
+    getPurchases();
   }, []);
 
   const RenderApp = (e) => {
@@ -103,7 +133,12 @@ function App() {
         case "/cart":
           return !album ? null : (
             <Grow in>
-              <Cart cart={cart} album={album} deleteItem={deleteItem} />
+              <Cart
+                cart={cart}
+                album={album}
+                deleteItem={deleteItem}
+                purchase={Purchase}
+              />
             </Grow>
           );
         case "/albums":
@@ -112,8 +147,14 @@ function App() {
               <Albums album={album} />
             </Grow>
           );
+        case "/purchase-history":
+          return !album ? null : (
+            <Grow in>
+              <PurchaseHistory album={album} />
+            </Grow>
+          );
         default:
-          return <div>DEFAULT</div>;
+          return <div>PAGE NOT FOUND</div>;
       }
     } else {
       return null;

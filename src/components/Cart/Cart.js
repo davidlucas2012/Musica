@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Rating from "@material-ui/lab/Rating";
 import "./Cart.css";
+import StripeCheckout from "react-stripe-checkout";
 
 function Cart(props) {
-  const { cart, album, deleteItem } = props;
+  const { cart, album, deleteItem, purchase } = props;
 
   const [sAlbum, setsAlbum] = useState([]);
 
@@ -33,10 +34,25 @@ function Cart(props) {
     console.log(e.target.id);
   };
 
+  const purchaseHistory = () => {
+    window.location.href = "/purchase-history";
+    // console.log(sAlbum);
+    // sAlbum.map((a) => purchase(a.id));
+  };
+
+  const handleToken = (token) => {
+    sAlbum.map((a) => purchase(a.id));
+  };
+
   return (
     <div className="cart-main-cont">
+      <span className="cart-history" onClick={purchaseHistory}>
+        PURCHASE HISTORY
+      </span>
+
       <div className="cart-left-cont">
         <span className="cart-title">SHOPPING CART</span>
+
         <span className="cart-count-span">
           You have {cart?.length} items in your cart
         </span>
@@ -44,13 +60,8 @@ function Cart(props) {
 
         <div className="cart-item-cont">
           {sAlbum.reverse().map((a, key) => (
-            <div
-              key={key}
-              className="item-cont"
-              id={a.id}
-              onClick={handleItemClick}
-            >
-              <div className="item-left">
+            <div key={key} className="item-cont">
+              <div className="item-left" id={a.id} onClick={handleItemClick}>
                 <img className="item-cover" src={a.cover}></img>
                 <Rating
                   className="item-ratings"
@@ -60,7 +71,7 @@ function Cart(props) {
                   readOnly
                 />
               </div>
-              <div className="item-mid">
+              <div className="item-mid" id={a.id} onClick={handleItemClick}>
                 <span className="ad-name">{a.name}</span>
                 <span className="ad-artist">{a.artist}</span>
                 <span className="ad-year">{a.year}</span>
@@ -120,8 +131,31 @@ function Cart(props) {
         </div>
 
         <span className="cart-divider"></span>
-
-        <span className="cart-checkout-btn"> CHECK OUT</span>
+        <div
+          className={sAlbum.length > 0 ? "stripe-div" : "stripe-div-disabled"}
+        >
+          <StripeCheckout
+            amount={(100 * totalPrice() * 5 * 1.12).toFixed(2)}
+            name={"Album Purchase"} // the pop-in header title
+            // image={movieInfo.cover} // the pop-in header image (default none)
+            ComponentClass={
+              sAlbum.length > 0 ? "stripe-div" : "stripe-div-disabled"
+            }
+            description={`Payment for ${sAlbum.length} album(s).`}
+            stripeKey="pk_test_51HEc6kBC7HNV0emX8YOONqQbo6S2RhuNQLfW5uvgiRZOg3EKhKoY6heYwUWdxbrwPdsil6StqCOEWlvQUxKfbiHV005w2ldUKF"
+            token={handleToken}
+          >
+            <div
+              className={
+                sAlbum.length > 0
+                  ? "cart-checkout-btn"
+                  : "cart-checkout-btn-disabled"
+              }
+            >
+              CHECK OUT
+            </div>
+          </StripeCheckout>
+        </div>
       </div>
     </div>
   );

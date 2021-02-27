@@ -5,6 +5,27 @@
   max-height: 80vh;
 }
 
+.cart-history {
+  position: absolute;
+  right: 2rem;
+  width: 12rem;
+
+  text-align: center;
+  border-radius: 8px;
+  font-weight: bolder;
+  color: rgb(100, 26, 26);
+  border: 2px solid rgb(100, 26, 26);
+  background-color: rgba(255, 255, 255, 0.596);
+  padding: 10px;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.cart-history:hover {
+  background-color: rgb(100, 26, 26);
+  color: white;
+}
+
 .cart-left-cont {
   display: flex;
   flex-direction: column;
@@ -33,7 +54,6 @@
 
 .cart-item-cont {
   /* background-color: slategrey; */
-
   overflow-y: scroll;
   padding-right: 1rem;
   padding-left: 1rem;
@@ -52,7 +72,6 @@
 }
 
 .item-left {
-  pointer-events: none;
   margin: 1rem;
   flex: 1;
   display: flex;
@@ -67,14 +86,14 @@
 .item-cover {
   height: 10rem;
   width: 10rem;
-
+  pointer-events: none;
   object-fit: cover;
   border-radius: 8px;
   margin-left: auto;
   margin-right: auto;
 }
 .item-mid {
-  pointer-events: none;
+  cursor: pointer;
   padding-top: 1rem;
   margin: 1rem;
   flex: 3;
@@ -83,6 +102,7 @@
 }
 .item-right {
   cursor: default;
+
   flex: 1;
   display: flex;
   margin: 1rem;
@@ -103,6 +123,7 @@
 }
 
 .item-delete {
+  z-index: 99;
   transition: 300ms;
   cursor: pointer;
   font-weight: bolder;
@@ -128,6 +149,7 @@
   box-shadow: 5px 5px 20px 5px #888888;
   height: min-content;
   margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .cart-summary-span {
@@ -210,13 +232,53 @@
 }
 
 .cart-checkout-btn {
+  width: 10rem;
+  margin-left: auto;
+  margin-right: auto;
   background-color: black;
   color: white;
-  padding: 10px;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-weight: bold;
   font-size: 15px;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 5px;
+  border: 1px solid white;
+  outline: none;
+  margin: 1rem;
+  text-align: center;
+}
+
+.stripe-div {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.stripe-div-disabled {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.cart-checkout-btn-disabled {
+  width: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: gray;
+  color: white;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px;
   border: 1px solid white;
   outline: none;
   margin: 1rem;

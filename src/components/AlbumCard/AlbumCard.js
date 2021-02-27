@@ -11,6 +11,8 @@ function AlbumCard(props) {
   return (
     <div className="ac-main-cont" onClick={handleClick}>
       <img className="ac-cover" src={album.cover}></img>
+      <span className="ac-price">${(album.ratings * 5).toFixed(2)}</span>
+      <span className="ac-name">{album.name}</span>
     </div>
   );
 }
