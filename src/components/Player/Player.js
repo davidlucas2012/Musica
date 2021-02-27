@@ -17,7 +17,7 @@ function Player(props) {
     setpause(true);
   };
 
-  const Pause = () => {
+  const Stop = () => {
     setcount("00");
     setpause(false);
   };
@@ -49,6 +49,7 @@ function Player(props) {
   }, [pause]);
 
   useEffect(() => {
+    Stop();
     if (!album) return;
     album.map((m) => {
       return m.songs
@@ -70,7 +71,7 @@ function Player(props) {
       <img className="pl-prev" src={next}></img>
 
       {pause ? (
-        <img className="pl-play" src={stop} onClick={Pause}></img>
+        <img className="pl-play" src={stop} onClick={Stop}></img>
       ) : (
         <img className="pl-play" src={play} onClick={Play}></img>
       )}

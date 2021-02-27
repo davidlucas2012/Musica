@@ -13,7 +13,7 @@ function App() {
   const [searchString, setsearchString] = useState("");
   const [album, setalbum] = useState();
   const [trackNumber, settrackNumber] = useState(null);
-  const [cart, setcart] = useState(null);
+  const [cart, setcart] = useState([]);
 
   const search = (e) => {
     console.log(e);
@@ -22,12 +22,14 @@ function App() {
 
   const playTrack = (e) => {
     settrackNumber(e);
+    addToRecent(e);
   };
 
   //get album from Firebase
 
   const albumLOc = firebase.firestore().collection("albums");
   const cartLoc = firebase.firestore().collection("cart");
+  const recent = firebase.firestore().collection("recent");
 
   function getdata() {
     albumLOc.get().then((item) => {
@@ -38,6 +40,7 @@ function App() {
   }
 
   function getCartItem() {
+    console.log(cart);
     cartLoc.get().then((c) => {
       const cartItem = c.docs.map((doc) => doc.data());
 
@@ -48,8 +51,22 @@ function App() {
   function addToCart(id) {
     setcart((prev) => [...prev, { albumId: id }]);
 
-    cartLoc.add({
+    cartLoc.doc(id).set({
       albumId: id,
+    });
+  }
+
+  function deleteItem(id) {
+    setcart([]);
+    cartLoc.doc(id).delete();
+    cart
+      .filter((f) => id != f.albumId)
+      .map((m) => setcart((prev) => [...prev, m]));
+  }
+
+  function addToRecent(track) {
+    recent.doc(track).set({
+      trackNumber: track,
     });
   }
 
@@ -66,13 +83,13 @@ function App() {
         case "/":
           return !album ? null : (
             <Grow in>
-              <Home album={album} />
+              <Home album={album} playTrack={playTrack} />
             </Grow>
           );
         case "/cart":
           return !album ? null : (
             <Grow in>
-              <Cart cart={cart} album={album} />
+              <Cart cart={cart} album={album} deleteItem={deleteItem} />
             </Grow>
           );
         case "/add-movie":
@@ -108,6 +125,7 @@ function App() {
             path="/album-details/:id/:sid"
             render={(props) => (
               <AlbumDetails
+                cart={cart}
                 playTrack={playTrack}
                 album={album}
                 addToCart={addToCart}

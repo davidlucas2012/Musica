@@ -3,25 +3,34 @@ import Rating from "@material-ui/lab/Rating";
 import "./Cart.css";
 
 function Cart(props) {
-  const { cart, album } = props;
+  const { cart, album, deleteItem } = props;
 
   const [sAlbum, setsAlbum] = useState([]);
 
   useEffect(() => {
     if (album && cart) {
-      cart.map((c) =>
+      cart?.map((c) =>
         album
           .filter((f) => c.albumId === f.id)
           .map((al) => setsAlbum((prev) => [...prev, al]))
       );
     }
-  }, []);
+  }, [cart]);
 
   const totalPrice = () => {
     return sAlbum?.reduce(
       (total, currentValue) => (total = total + currentValue.ratings),
       0
     );
+  };
+
+  const handleDelete = (e) => {
+    deleteItem(e.target.id);
+  };
+
+  const handleItemClick = (e) => {
+    window.location.href = `album-details/${e.target.id}/0`;
+    console.log(e.target.id);
   };
 
   return (
@@ -35,7 +44,12 @@ function Cart(props) {
 
         <div className="cart-item-cont">
           {sAlbum.map((a, key) => (
-            <div key={key} className="item-cont">
+            <div
+              key={key}
+              className="item-cont"
+              id={a.id}
+              onClick={handleItemClick}
+            >
               <div className="item-left">
                 <img className="item-cover" src={a.cover}></img>
                 <Rating
@@ -55,7 +69,9 @@ function Cart(props) {
                 <span className="item-price">
                   ${(a.ratings * 5).toFixed(2)}
                 </span>
-                <span className="item-delete">remove</span>
+                <span className="item-delete" id={a.id} onClick={handleDelete}>
+                  remove
+                </span>
               </div>
             </div>
           ))}

@@ -5,7 +5,7 @@ import TopSongs from "../TopSongs/TopSongs";
 import "./Home.css";
 
 function Home(props) {
-  const { album } = props;
+  const { album, playTrack } = props;
   const [topSongs, settopSongs] = useState([]);
 
   console.log(album);
@@ -31,7 +31,7 @@ function Home(props) {
   return (
     <div className="home-main-cont">
       <TopAlbum album={album} />
-      <TopSongs topSongs={topSongs} album={album} />
+      <TopSongs topSongs={topSongs} album={album} playTrack={playTrack} />
     </div>
   );
 }

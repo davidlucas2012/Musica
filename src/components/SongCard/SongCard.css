@@ -7,10 +7,33 @@
   background: rgba(211, 211, 211, 0.473);
   padding: 5px;
   border-radius: 5px;
+  position: relative;
+}
+
+.sc-play {
+  filter: invert(1);
+  margin-top: 12px;
+  margin-left: 8px;
+  width: 2rem;
+  height: 2rem;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 99;
+  transition: 300;
+  opacity: 0;
+  transition: 300;
 }
 
 .sc-main-cont:hover {
   filter: brightness(1.1);
+}
+
+.sc-main-cont:hover .sc-cover {
+  filter: brightness(0.5);
+}
+.sc-main-cont:hover .sc-play {
+  opacity: 1;
 }
 
 .sc-title-year-cont {
@@ -33,6 +56,7 @@
 }
 
 .sc-cover {
+  transition: 300ms;
   width: 3rem;
   height: 3rem;
 }

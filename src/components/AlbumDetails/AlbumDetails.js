@@ -4,13 +4,20 @@ import ply from "../../images/play.png";
 import Rating from "@material-ui/lab/Rating";
 
 function AlbumDetails(props) {
-  const { album, playTrack, addToCart } = props;
+  const { album, playTrack, addToCart, cart } = props;
   const { id, sid } = props.match.params;
   const [selectedAlbum, setselectedAlbum] = useState();
+  const [added, setadded] = useState(null);
 
   useEffect(() => {
     if (album) album.filter((f) => f.id === id).map((a) => setselectedAlbum(a));
   }, [album]);
+
+  useEffect(() => {
+    cart.map((m) => {
+      if (m.albumId === id) setadded(true);
+    });
+  }, [cart]);
 
   const Play = (e) => {
     var trackNumber = e.target.getAttribute("songid");
@@ -18,7 +25,7 @@ function AlbumDetails(props) {
   };
 
   const handleAdd = () => {
-    addToCart(id);
+    added ? (window.location.href = "/cart") : addToCart(id);
   };
 
   return !selectedAlbum ? null : (
@@ -44,7 +51,10 @@ function AlbumDetails(props) {
               ${(selectedAlbum.ratings * 5).toFixed(2)}
             </span>
             <span className="ad-cart" onClick={handleAdd}>
-              ADD TO CART
+              {added ? "GO TO CART" : "ADD TO CART"}
+            </span>
+            <span className="ad-added">
+              {added ? "Album added to cart" : ""}
             </span>
           </div>
         </div>
