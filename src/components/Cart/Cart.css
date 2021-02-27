@@ -33,6 +33,7 @@
 
 .cart-item-cont {
   /* background-color: slategrey; */
+
   overflow-y: scroll;
   padding-right: 1rem;
   padding-left: 1rem;

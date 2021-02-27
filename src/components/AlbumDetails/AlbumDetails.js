@@ -9,12 +9,14 @@ function AlbumDetails(props) {
   const [selectedAlbum, setselectedAlbum] = useState();
   const [added, setadded] = useState(null);
 
+  console.log(selectedAlbum);
+
   useEffect(() => {
     if (album) album.filter((f) => f.id === id).map((a) => setselectedAlbum(a));
   }, [album]);
 
   useEffect(() => {
-    cart.map((m) => {
+    cart?.map((m) => {
       if (m.albumId === id) setadded(true);
     });
   }, [cart]);

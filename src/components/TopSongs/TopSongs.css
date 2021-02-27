@@ -8,8 +8,30 @@
   min-width: 70rem;
 }
 
+.ts-title-cont {
+  position: relative;
+}
+
+.ts-brush {
+  height: 5rem;
+  width: 17rem;
+  position: relative;
+}
+
+.ts-brush-r {
+  height: 5rem;
+  width: 20rem;
+  position: relative;
+}
+
 .ts-title {
-  padding-left: 3rem;
+  left: 2rem;
+  top: 10px;
+  color: white;
+  position: absolute;
+  /* background-color: rgb(100, 26, 26); */
+  padding: 10px;
+  margin-bottom: 1rem;
   font-weight: bolder;
   font-size: 25px;
   font-family: "Courier New", Courier, monospace;

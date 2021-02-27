@@ -77,8 +77,8 @@ function Navbar(props) {
             </Link>
           </li> */}
           <li className="nav-item">
-            <Link to="/compare" className="nav-links" onClick={closeMobileMenu}>
-              Compare
+            <Link to="/albums" className="nav-links" onClick={closeMobileMenu}>
+              Albums
             </Link>
           </li>
           <li className="nav-item">

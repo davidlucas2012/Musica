@@ -5,18 +5,16 @@ import TopSongs from "../TopSongs/TopSongs";
 import "./Home.css";
 
 function Home(props) {
-  const { album, playTrack } = props;
+  const { album, playTrack, recents } = props;
   const [topSongs, settopSongs] = useState([]);
-
-  console.log(album);
 
   function getdata() {
     //get songs in album
-    album
-      .filter((fil) => fil.name === "album1")
-      .map((album) => {
-        console.log(album.songs);
-      });
+    // album
+    //   .filter((fil) => fil.name === "album1")
+    //   .map((album) => {
+    //     console.log(album.songs);
+    //   });
 
     //get all songs
     album.map((album) => {
@@ -32,6 +30,12 @@ function Home(props) {
     <div className="home-main-cont">
       <TopAlbum album={album} />
       <TopSongs topSongs={topSongs} album={album} playTrack={playTrack} />
+      <TopSongs
+        topSongs={topSongs}
+        album={album}
+        playTrack={playTrack}
+        recents={recents}
+      />
     </div>
   );
 }

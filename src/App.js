@@ -8,12 +8,14 @@ import firebase from "./firebase";
 import AlbumDetails from "./components/AlbumDetails/AlbumDetails";
 import Player from "./components/Player/Player";
 import Cart from "./components/Cart/Cart";
+import Albums from "./components/Albums/Albums";
 
 function App() {
   const [searchString, setsearchString] = useState("");
   const [album, setalbum] = useState();
   const [trackNumber, settrackNumber] = useState(null);
-  const [cart, setcart] = useState([]);
+  const [cart, setcart] = useState(null);
+  const [recents, setrecents] = useState(null);
 
   const search = (e) => {
     console.log(e);
@@ -67,12 +69,24 @@ function App() {
   function addToRecent(track) {
     recent.doc(track).set({
       trackNumber: track,
+      timeStamp: new Date(),
+    });
+
+    getRecents();
+  }
+
+  function getRecents() {
+    recent.get().then((r) => {
+      const rec = r.docs.map((doc) => doc.data());
+
+      setrecents(rec);
     });
   }
 
   useEffect(() => {
     getdata();
     getCartItem();
+    getRecents();
   }, []);
 
   const RenderApp = (e) => {
@@ -83,7 +97,7 @@ function App() {
         case "/":
           return !album ? null : (
             <Grow in>
-              <Home album={album} playTrack={playTrack} />
+              <Home album={album} playTrack={playTrack} recents={recents} />
             </Grow>
           );
         case "/cart":
@@ -92,8 +106,12 @@ function App() {
               <Cart cart={cart} album={album} deleteItem={deleteItem} />
             </Grow>
           );
-        case "/add-movie":
-          return null;
+        case "/albums":
+          return !album ? null : (
+            <Grow in>
+              <Albums album={album} />
+            </Grow>
+          );
         default:
           return <div>DEFAULT</div>;
       }

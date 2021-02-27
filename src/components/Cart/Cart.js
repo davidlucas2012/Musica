@@ -43,7 +43,7 @@ function Cart(props) {
         <span className="cart-div"></span>
 
         <div className="cart-item-cont">
-          {sAlbum.map((a, key) => (
+          {sAlbum.reverse().map((a, key) => (
             <div
               key={key}
               className="item-cont"

@@ -8,11 +8,27 @@
   min-width: 70rem;
   cursor: pointer;
 }
+.ta-title-cont {
+  position: relative;
+}
+
+.ta-brush {
+  height: 5rem;
+  width: 16rem;
+  position: relative;
+}
 
 .ta-title {
-  padding-left: 3rem;
+  left: 2rem;
+  top: 10px;
+  position: absolute;
+  width: fit-content;
+  /* background-color: rgb(100, 26, 26); */
+  padding: 10px;
+  color: white;
   font-weight: bolder;
   font-size: 25px;
+  margin-bottom: 1rem;
   font-family: "Courier New", Courier, monospace;
 }
 
