@@ -1,0 +1,33 @@
+.ph-main-cont {
+  padding-left: 4rem;
+  padding-right: 4rem;
+  padding-bottom: 4rem;
+}
+
+.item-div {
+  margin-top: 3rem;
+}
+
+.ph-title {
+  color: rgb(100, 26, 26);
+  font-weight: bolder;
+  font-size: 35px;
+  margin-top: -10rem;
+}
+
+.item-purchase-date {
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: large;
+  margin-bottom: 2rem;
+  color: rgb(100, 26, 26);
+  font-weight: bold;
+}
+
+@media screen and (max-width: 960px) {
+  .ph-main-cont {
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+}

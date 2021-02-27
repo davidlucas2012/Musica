@@ -17,7 +17,14 @@ function App() {
   const [trackNumber, settrackNumber] = useState(null);
   const [cart, setcart] = useState(null);
   const [recents, setrecents] = useState(null);
-  const [purchase, setpurchase] = useState(null);
+  const [purchase, setpurchase] = useState([]);
+
+  const DATE_OPTIONS = {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
 
   const search = (e) => {
     console.log(e);
@@ -106,7 +113,7 @@ function App() {
   function Purchase(album) {
     history.doc(album).set({
       albumId: album,
-      timeStamp: new Date(),
+      timeStamp: new Date().toLocaleDateString("en-US", DATE_OPTIONS),
     });
 
     emptyCart();
@@ -150,7 +157,7 @@ function App() {
         case "/purchase-history":
           return !album ? null : (
             <Grow in>
-              <PurchaseHistory album={album} />
+              <PurchaseHistory album={album} purchase={purchase} />
             </Grow>
           );
         default:
