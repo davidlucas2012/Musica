@@ -69,15 +69,16 @@ function AlbumDetails(props) {
                 sid === m.songId ? "track-main-cont-musc" : "track-main-cont"
               }
             >
-              <span className="ad-track-number">{number + 1}</span>
-              <span className="ad-track-title">{m.title}</span>
-              <img
-                className="ad-play"
-                src={ply}
-                alt="play"
+              <div
+                className="number-play-cont"
                 songid={m.songId}
                 onClick={Play}
-              ></img>
+              >
+                <img className="new-play" src={ply} alt="play"></img>
+                <span className="ad-track-number">{number + 1}</span>
+              </div>
+
+              <span className="ad-track-title">{m.title}</span>
 
               <span className="ad-track-dur">{m.dur}</span>
             </div>

@@ -164,7 +164,7 @@ function App() {
             </Grow>
           );
         default:
-          return <div>PAGE NOT FOUND</div>;
+          return <div className="page-not-found">PAGE NOT FOUND</div>;
       }
     } else {
       return (

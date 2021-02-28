@@ -291,6 +291,12 @@
   .cart-main-cont {
     flex-direction: column;
   }
+  .cart-checkout-btn-disabled {
+    width: 7rem;
+  }
+  .cart-checkout-btn {
+    width: 7rem;
+  }
 
   .cart-left-cont {
     height: 50rem;
