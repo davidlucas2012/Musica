@@ -1,0 +1,41 @@
+.sr-main-cont {
+  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.album-list {
+  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  justify-content: space-evenly;
+  overflow-x: hidden;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.song-list {
+  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  margin-top: 2rem;
+  justify-content: space-evenly;
+  overflow-x: hidden;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mov-cont {
+  width: 10rem;
+  height: 20rem;
+  margin: 1rem;
+}
+
+.search-span {
+}

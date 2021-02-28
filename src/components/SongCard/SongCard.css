@@ -8,6 +8,7 @@
   padding: 5px;
   border-radius: 5px;
   position: relative;
+  height: fit-content;
 }
 
 .sc-play {
@@ -45,15 +46,19 @@
 
 .sc-title {
   font-weight: bolder;
+
+  font-size: 16px;
 }
 
 .sc-year {
+  font-size: 15px;
 }
 
 .sc-dur {
   margin-top: auto;
   margin-bottom: auto;
   margin-left: auto;
+  font-size: 18px;
 }
 
 .sc-cover {

@@ -3,6 +3,7 @@
   width: 12rem;
   height: 12rem;
   position: relative;
+  cursor: pointer;
 }
 
 .ac-main-cont:hover .ac-cover {

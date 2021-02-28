@@ -1,12 +1,11 @@
 .ta-main-cont {
   display: flex;
-  padding-top: 3rem;
+  padding-top: 1rem;
   padding-bottom: 3rem;
   padding-left: 6rem;
   padding-right: 6rem;
   flex-direction: column;
   min-width: 70rem;
-  cursor: pointer;
 }
 .ta-title-cont {
   position: relative;
@@ -43,5 +42,6 @@
     min-width: 352px;
     padding-left: 5px;
     padding-right: 5px;
+    padding-top: 3rem;
   }
 }

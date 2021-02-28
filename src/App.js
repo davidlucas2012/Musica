@@ -10,6 +10,8 @@ import Player from "./components/Player/Player";
 import Cart from "./components/Cart/Cart";
 import Albums from "./components/Albums/Albums";
 import PurchaseHistory from "./components/PurchaseHistory/PurchaseHistory";
+import SearchResult from "./components/SearchResult/SearchResult";
+import ReactModal from "react-modal";
 
 function App() {
   const [searchString, setsearchString] = useState("");
@@ -114,6 +116,7 @@ function App() {
     history.doc(album).set({
       albumId: album,
       timeStamp: new Date().toLocaleDateString("en-US", DATE_OPTIONS),
+      date: new Date(),
     });
 
     emptyCart();
@@ -164,21 +167,38 @@ function App() {
           return <div>PAGE NOT FOUND</div>;
       }
     } else {
-      return null;
-      // <Grow in>
-      //   <div className="sr-cont">
-      //     <div className="span-cont">
-      //       <span className="sr-span">Search result related to:</span>
-      //       <span className="sr-result">{searchString}</span>
-      //     </div>
-      //     <SearchResult searchString={searchString} />
-      //   </div>
-      // </Grow>
+      return (
+        <div className="sr-cont">
+          <div className="span-cont">
+            {/* <span className="sr-span">Search result related to:</span> */}
+          </div>
+          <Grow in>
+            <SearchResult
+              playTrack={playTrack}
+              searchString={searchString}
+              album={album}
+            />
+          </Grow>
+        </div>
+      );
     }
   };
 
   return (
     <div className="app-main-cont">
+      <ReactModal
+        ariaHideApp={false}
+        isOpen={!album}
+        closeTimeoutMS={300}
+        className="info-modal"
+        overlayClassName="modal-container"
+      >
+        <div className="fetch-modal">
+          <CircularProgress className="circ" />
+          <span className="fetch-span"> Fetching Data...</span>
+        </div>
+      </ReactModal>
+
       <BrowserRouter>
         {cart ? (
           <Navbar search={search} cart={cart} />

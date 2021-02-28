@@ -1,12 +1,11 @@
 .a-main-cont {
   display: flex;
-  padding-top: 3rem;
+  padding-top: 2rem;
   padding-bottom: 3rem;
   padding-left: 6rem;
   padding-right: 6rem;
   flex-direction: column;
   min-width: 70rem;
-  cursor: pointer;
 }
 
 .a-title-cont {

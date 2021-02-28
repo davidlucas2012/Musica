@@ -36,7 +36,7 @@ function SearchResult(props) {
       {/* <span className="sr-span">Search result related to: {searchString}</span> */}
 
       <span className="search-info">
-        Albums Related to:
+        Albums or Artists Related to:
         <span className="sr-result">{searchString}</span>
       </span>
 

@@ -46,10 +46,6 @@ function Cart(props) {
 
   return (
     <div className="cart-main-cont">
-      <span className="cart-history" onClick={purchaseHistory}>
-        PURCHASE HISTORY
-      </span>
-
       <div className="cart-left-cont">
         <span className="cart-title">SHOPPING CART</span>
 
@@ -87,6 +83,9 @@ function Cart(props) {
             </div>
           ))}
         </div>
+        <span className="cart-history" onClick={purchaseHistory}>
+          PURCHASE HISTORY
+        </span>
       </div>
 
       <div className="cart-right-cont">

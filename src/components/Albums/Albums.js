@@ -14,8 +14,8 @@ function Albums(props) {
         {album
           ? album
               .sort(
-                ({ id: previousRate }, { id: currentRate }) =>
-                  currentRate - previousRate
+                ({ id: previousId }, { id: currentId }) =>
+                  currentId - previousId
               )
               .map((a) => <AlbumCard album={a} />)
           : null}
