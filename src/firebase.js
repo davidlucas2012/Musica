@@ -1,13 +1,23 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
+// import env from "dotenv";
+
+// env.config();
+console.log("TEST");
+console.log(process.env.REACT_APP_KEY);
+console.log(process.env.REACT_APP_DOMAIN);
+console.log(process.env.REACT_APP_PROJECT);
+console.log(process.env.REACT_APP_BUCKET);
+console.log(process.env.REACT_APP_SENDER);
+console.log(process.env.REACT_APP_APPID);
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDelSV9ADCqYuLzfEDyLkteBL7quA4MQLg",
-  authDomain: "musica-82294.firebaseapp.com",
-  projectId: "musica-82294",
-  storageBucket: "musica-82294.appspot.com",
-  messagingSenderId: "979043319235",
-  appId: "1:979043319235:web:19d8c5a7582ed13d8bd176",
+  apiKey: process.env.REACT_APP_KEY,
+  authDomain: process.env.REACT_APP_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT,
+  storageBucket: process.env.REACT_APP_BUCKET,
+  messagingSenderId: process.env.REACT_APP_SENDER,
+  appId: process.env.REACT_APP_APPID,
 };
 
 firebase.initializeApp(firebaseConfig);
