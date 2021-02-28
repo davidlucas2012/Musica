@@ -22,6 +22,7 @@ function Navbar(props) {
   const closeMobileMenu = () => {
     // window.location.reload(false);
     setClick(false);
+
     setsearchValue("");
   };
 
@@ -110,7 +111,7 @@ function Navbar(props) {
 
           <li>
             <Link
-              to="/sign-up"
+              to="/#"
               className="nav-links-mobile"
               onClick={closeMobileMenu}
             >

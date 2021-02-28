@@ -68,20 +68,24 @@ function Player(props) {
   }, [trackNumber]);
   return !Album ? null : (
     <div className="pl-main-cont">
-      <img className="pl-prev" src={next}></img>
+      <div className="album-key-cont">
+        <img
+          className={pause ? "pl-cover-rotate" : "pl-cover"}
+          src={Album.cover}
+          alt="cover"
+        ></img>
 
-      {pause ? (
-        <img className="pl-play" src={stop} onClick={Stop}></img>
-      ) : (
-        <img className="pl-play" src={play} onClick={Play}></img>
-      )}
-      <img className="pl-next" src={next}></img>
+        <div className="key-cont">
+          <img className="pl-prev" src={next}></img>
 
-      <img
-        className={pause ? "pl-cover-rotate" : "pl-cover"}
-        src={Album.cover}
-        alt="cover"
-      ></img>
+          {pause ? (
+            <img className="pl-play" src={stop} onClick={Stop}></img>
+          ) : (
+            <img className="pl-play" src={play} onClick={Play}></img>
+          )}
+          <img className="pl-next" src={next}></img>
+        </div>
+      </div>
 
       <div className="pl-middle-cont">
         <div className="pl-upper-mid">

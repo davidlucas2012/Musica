@@ -198,6 +198,29 @@
     padding-right: 1rem;
   }
 
+  .ad-name {
+    font-size: 22px;
+  }
+
+  .ad-artist {
+    font-size: 18px;
+  }
+
+  .ad-year {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .ad-cov {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ad-price {
+    font-size: 25px;
+  }
+
   .cover-track-cont {
     padding-left: 0rem;
     padding-right: 0rem;
@@ -207,7 +230,7 @@
   }
 
   .track-cont {
-    width: 90vw;
+    width: 80vw;
     display: flex;
     flex-direction: column;
   }

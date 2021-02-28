@@ -16,7 +16,6 @@
   margin-top: auto;
   margin-bottom: auto;
   cursor: pointer;
-  margin-left: 1rem;
   filter: invert(1);
 }
 
@@ -26,8 +25,8 @@
   margin-top: auto;
   margin-bottom: auto;
   cursor: pointer;
-  margin-left: 1rem;
   filter: invert(1);
+  margin-left: 1rem;
 }
 
 .pl-play {
@@ -130,11 +129,52 @@
   filter: invert(1);
 }
 
+.album-key-cont {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.key-cont {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 @media screen and (max-width: 960px) {
+  .album-key-cont {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .key-cont {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .pl-main-cont {
+    height: 6rem;
+    padding-right: 1rem;
+  }
+
+  .pl-end-cont {
+    opacity: 0;
+    margin-right: 0rem;
+  }
+
+  .pl-cover {
+    width: 3rem;
+    height: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pl-cover-rotate {
+    width: 3rem;
+    height: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .pl-prev {
     width: 1rem;
     height: 1rem;
-    margin-left: 0.5rem;
   }
 
   .pl-next {
