@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import TopAlbum from "../TopAlbum/TopAlbum";
 import TopSongs from "../TopSongs/TopSongs";
 import "./Home.css";
+import cover from "../../images/cover.png";
 
 function Home(props) {
   const { album, playTrack, recents } = props;
@@ -28,6 +29,9 @@ function Home(props) {
 
   return (
     <div className="home-main-cont">
+      <div className="home-cover">
+        <img className="img-cover" src={cover} alt="cover"></img>
+      </div>
       <TopAlbum album={album} />
       <TopSongs topSongs={topSongs} album={album} playTrack={playTrack} />
       <TopSongs

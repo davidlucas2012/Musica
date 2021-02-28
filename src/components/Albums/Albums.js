@@ -4,6 +4,7 @@ import "./Albums.css";
 
 function Albums(props) {
   const { album } = props;
+
   return (
     <div className="a-main-cont">
       <div className="a-title-cont">

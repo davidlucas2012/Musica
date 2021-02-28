@@ -1,3 +1,19 @@
 .home-main-cont {
-  padding-bottom: 20rem;
+  padding-bottom: 2rem;
+}
+
+.home-carousel {
+  display: flex;
+}
+
+.home-cover {
+  display: flex;
+  margin-top: -5rem;
+  background-color: rgb(0, 0, 0);
+  height: 26rem;
+}
+
+.img-cover {
+  width: 100%;
+  object-fit: cover;
 }
