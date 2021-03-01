@@ -137,7 +137,12 @@ function App() {
         case "/":
           return !album ? null : (
             <Grow in>
-              <Home album={album} playTrack={playTrack} recents={recents} />
+              <Home
+                album={album}
+                playTrack={playTrack}
+                recents={recents}
+                purchase={purchase}
+              />
             </Grow>
           );
         case "/cart":

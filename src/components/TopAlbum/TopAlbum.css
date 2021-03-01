@@ -18,6 +18,18 @@
   position: relative;
 }
 
+.ta-brush {
+  height: 5rem;
+  width: 16rem;
+  position: relative;
+}
+
+.ta-brush-p {
+  height: 5rem;
+  width: 21rem;
+  position: relative;
+}
+
 .ta-title {
   left: 2rem;
   top: 10px;

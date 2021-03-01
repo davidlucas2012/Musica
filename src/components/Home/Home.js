@@ -6,7 +6,7 @@ import "./Home.css";
 import cover from "../../images/cover.png";
 
 function Home(props) {
-  const { album, playTrack, recents } = props;
+  const { album, playTrack, recents, purchase } = props;
   const [topSongs, settopSongs] = useState([]);
 
   function getdata() {
@@ -40,6 +40,8 @@ function Home(props) {
         playTrack={playTrack}
         recents={recents}
       />
+      <div className="home-div"></div>
+      <TopAlbum album={album} purchase={purchase} />
     </div>
   );
 }
